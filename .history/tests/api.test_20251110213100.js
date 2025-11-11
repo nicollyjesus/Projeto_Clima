@@ -109,5 +109,3 @@ async function getWeather(city) {
     `;
   } catch (erro) {
     resultado
-  }
-}
