@@ -1,0 +1,17 @@
+{
+  "name": "projeto_clima",
+  "version": "1.0.0",
+  "description": "Aplicativo de previsão do tempo usando JavaScript puro e testes com Jest",
+  "main": "api.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Nicolly",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "node-fetch": "^3.3.2"
+  },
+  "type": "module"
+}
