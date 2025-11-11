@@ -1,3 +1,4 @@
+// Formata data e hora completa (ex: segunda-feira, 13 de outubro de 2025, 15:00)
 function formatarDataCompleta(isoString) {
   const data = new Date(isoString);
   const opcoes = {
@@ -11,6 +12,7 @@ function formatarDataCompleta(isoString) {
   return data.toLocaleString("pt-BR", opcoes);
 }
 
+// Mapeia códigos de clima para ícones da biblioteca Weather Icons
 function obterIconeClima(weathercode) {
   const mapa = {
     0: "wi-day-sunny",
@@ -35,16 +37,17 @@ function obterIconeClima(weathercode) {
   return mapa[weathercode] || "wi-na";
 }
 
+// Altera o fundo da página com base no horário (dia/noite)
 function ajustarFundo(isDay) {
-  if (!modoEscuroAtivo) {
-    document.body.classList.remove("day", "night");
-    document.body.classList.add(isDay ? "day" : "night");
-  }
+  document.body.classList.remove("day", "night");
+  document.body.classList.add(isDay ? "day" : "night");
 }
 
+// Função principal que busca clima com base no nome da cidade
 async function getWeather(city) {
   const resultado = document.getElementById("resultado");
   try {
+    // Etapa 1: Geocodificação
     const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
     const geoResponse = await fetch(geoUrl);
     const geoData = await geoResponse.json();
@@ -55,6 +58,7 @@ async function getWeather(city) {
 
     const { name, country, latitude, longitude } = geoData.results[0];
 
+    // Etapa 2: Consulta de clima
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
     const weatherResponse = await fetch(weatherUrl);
     const weatherData = await weatherResponse.json();
@@ -63,8 +67,10 @@ async function getWeather(city) {
     const icone = obterIconeClima(clima.weathercode);
     const dataHora = formatarDataCompleta(clima.time);
 
+    // Ajusta fundo com base no horário
     ajustarFundo(clima.is_day);
 
+    // Exibe os dados na tela
     resultado.innerHTML = `
       <h2>${name}, ${country}</h2>
       <p>${dataHora}</p>
@@ -77,6 +83,7 @@ async function getWeather(city) {
   }
 }
 
+// Evento do formulário
 document.getElementById("weather-form").addEventListener("submit", function (e) {
   e.preventDefault();
   const city = document.getElementById("city-input").value.trim();
@@ -86,15 +93,4 @@ document.getElementById("weather-form").addEventListener("submit", function (e) 
   } else {
     document.getElementById("resultado").innerHTML = "Por favor, digite o nome de uma cidade.";
   }
-});
-
-// Alternância manual de tema
-const toggleBtn = document.getElementById("toggle-theme");
-let modoEscuroAtivo = false;
-
-toggleBtn.addEventListener("click", () => {
-  modoEscuroAtivo = !modoEscuroAtivo;
-  document.body.classList.remove("day", "night");
-  document.body.classList.add(modoEscuroAtivo ? "night" : "day");
-  toggleBtn.textContent = modoEscuroAtivo ? "☀️ Voltar para modo claro" : "🌙 Ativar modo escuro";
 });

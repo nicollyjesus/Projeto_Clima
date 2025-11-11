@@ -1,3 +1,4 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +7,8 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: background 0.5s ease, color 0.5s ease;
+  transition: background 0.5s ease;
+  color: #fff;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -14,27 +16,35 @@ body {
   padding: 2rem;
 }
 
-/* Modo claro */
+
+body.day {
+  background: linear-gradient(to right, #74ebd5, #9face6);
+}
+
+
+body.night {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
 body.day {
   background: linear-gradient(to right, #74ebd5, #9face6);
   color: #000;
 }
-
-/* Modo escuro */
+/* Fundo alternativo (modo noite) */
 body.night {
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   color: #fff;
 }
 
+
 .container {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 2rem;
   border-radius: 15px;
   max-width: 400px;
   width: 100%;
   text-align: center;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -45,7 +55,7 @@ h1 {
 form {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 input[type="text"] {
@@ -70,18 +80,7 @@ button:hover {
   background-color: #357ab8;
 }
 
-#toggle-theme {
-  margin-top: 0.5rem;
-  background-color: #222;
-  color: #fff;
-}
-
-#toggle-theme:hover {
-  background-color: #444;
-}
-
 .weather-result {
-  margin-top: 1.5rem;
   font-size: 1rem;
   line-height: 1.6;
 }
