@@ -1,3 +1,4 @@
+// Função para formatar data e hora completa
 function formatarDataCompleta(isoString) {
   const data = new Date(isoString);
   const opcoes = {
@@ -11,6 +12,7 @@ function formatarDataCompleta(isoString) {
   return data.toLocaleString("pt-BR", opcoes);
 }
 
+// Função para obter o ícone de clima com base no weathercode
 function obterIconeClima(weathercode) {
   const mapa = {
     0: "wi-day-sunny",
@@ -35,13 +37,14 @@ function obterIconeClima(weathercode) {
   return mapa[weathercode] || "wi-na";
 }
 
+// Função para alterar o fundo com base no horário
 function ajustarFundo(isDay) {
-  if (!modoEscuroAtivo) {
-    document.body.classList.remove("day", "night");
-    document.body.classList.add(isDay ? "day" : "night");
-  }
+  document.body.style.background = isDay
+    ? "linear-gradient(to right, #74ebd5, #9face6)"
+    : "linear-gradient(to right, #0f2027, #203a43, #2c5364)";
 }
 
+// Função principal
 async function getWeather(city) {
   const resultado = document.getElementById("resultado");
   try {
@@ -68,7 +71,7 @@ async function getWeather(city) {
     resultado.innerHTML = `
       <h2>${name}, ${country}</h2>
       <p>${dataHora}</p>
-      <i class="wi ${icone}"></i>
+      <i class="wi ${icone}" style="font-size: 48px;"></i>
       <p>🌡️ Temperatura: ${clima.temperature}°C</p>
       <p>💨 Vento: ${clima.windspeed} km/h</p>
     `;
@@ -77,6 +80,7 @@ async function getWeather(city) {
   }
 }
 
+// Evento do formulário
 document.getElementById("weather-form").addEventListener("submit", function (e) {
   e.preventDefault();
   const city = document.getElementById("city-input").value.trim();
@@ -86,15 +90,4 @@ document.getElementById("weather-form").addEventListener("submit", function (e) 
   } else {
     document.getElementById("resultado").innerHTML = "Por favor, digite o nome de uma cidade.";
   }
-});
-
-// Alternância manual de tema
-const toggleBtn = document.getElementById("toggle-theme");
-let modoEscuroAtivo = false;
-
-toggleBtn.addEventListener("click", () => {
-  modoEscuroAtivo = !modoEscuroAtivo;
-  document.body.classList.remove("day", "night");
-  document.body.classList.add(modoEscuroAtivo ? "night" : "day");
-  toggleBtn.textContent = modoEscuroAtivo ? "☀️ Voltar para modo claro" : "🌙 Ativar modo escuro";
 });
