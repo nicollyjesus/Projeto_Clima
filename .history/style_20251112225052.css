@@ -120,34 +120,3 @@ button:hover {
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
-
-.previsao-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.card-dia {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 1rem;
-  width: 160px;
-  text-align: center;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: inherit;
-  transition: transform 0.3s ease;
-}
-
-.card-dia:hover {
-  transform: scale(1.05);
-}
-
-.card-dia strong {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
