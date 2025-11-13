@@ -94,54 +94,33 @@ function salvarCache(chave, dados) {
  * @param {Object} dados - Dados meteorológicos.
  */
 function exibirClima(dados) {
+  const resultado = document.getElementById("resultado");
+  ajustarFundo(dados.is_day);
   resultado.innerHTML = `
-  <div class="clima-atual">
-    <h2>Previsão do Tempo</h2>
-    <div class="clima-card">
-      <div class="clima-info">
-        <i class="wi ${dados.icone}"></i>
-        <div class="temperatura">${dados.clima.temperature}°</div>
-      </div>
-      <div class="local-info">
-        <h3>${dados.name}, ${dados.country}</h3>
-        <p>${dados.dataHora}</p>
-      </div>
-      <div class="detalhes">
-        <div class="box">
-          <span>💧 Umidade</span>
-          <strong>${dados.previsao[0].umidade}%</strong>
+    <h2>${dados.name}, ${dados.country}</h2>
+    <p>${dados.dataHora}</p>
+    <i class="wi ${dados.icone}"></i>
+    <p>🌡️ Temperatura: ${dados.clima.temperature}°C</p>
+    <p>💨 Vento: ${dados.clima.windspeed} km/h</p>
+    <hr>
+    <h3>📅 Previsão para os próximos 5 dias:</h3>
+    <div class="previsao-container">
+      ${dados.previsao
+        .map(
+          (dia) => `
+        <div class="card-dia">
+          <strong>${dia.data}</strong>
+          <p>☀️ Máx: ${dia.max}°C</p>
+          <p>❄️ Mín: ${dia.min}°C</p>
+          <p>🌧️ Precipitação: ${dia.precipitacao} mm</p>
+          <p>💧 Umidade: ${dia.umidade}%</p>
         </div>
-        <div class="box">
-          <span>💨 Vento</span>
-          <strong>${dados.clima.windspeed} km/h</strong>
-        </div>
-        <div class="box">
-          <span>🌧️ Precipitação</span>
-          <strong>${dados.previsao[0].precipitacao} mm</strong>
-        </div>
-      </div>
+      `
+        )
+        .join("")}
     </div>
-  </div>
-  <hr>
-  <h3>📅 Previsão para os próximos 5 dias:</h3>
-  <div class="previsao-container">
-    ${dados.previsao
-      .map(
-        (dia) => `
-      <div class="card-dia">
-        <strong>${dia.data}</strong>
-        <p>☀️ Máx: ${dia.max}°C</p>
-        <p>❄️ Mín: ${dia.min}°C</p>
-        <p>🌧️ ${dia.precipitacao} mm</p>
-        <p>💧 ${dia.umidade}%</p>
-      </div>
-    `
-      )
-      .join("")}
-  </div>
-`;
+  `;
 }
-
 
 /**
  * Busca dados meteorológicos atuais e previsão de 5 dias.

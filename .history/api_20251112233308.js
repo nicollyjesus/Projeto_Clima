@@ -140,6 +140,7 @@ function exibirClima(dados) {
       .join("")}
   </div>
 `;
+
 }
 
 

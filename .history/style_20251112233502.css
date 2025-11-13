@@ -1,0 +1,142 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(to right, #74ebd5, #9face6);
+  color: #333;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.night {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  flex: 1;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+}
+
+#resultado {
+  margin-top: 2rem;
+}
+
+.clima-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #333;
+}
+
+.clima-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.clima-info i {
+  font-size: 48px;
+  color: #4a90e2;
+}
+
+.temperatura {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.local-info h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.local-info p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.detalhes {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.detalhes .box {
+  background-color: #f0f4f8;
+  border-radius: 10px;
+  padding: 0.8rem;
+  width: 100px;
+}
+
+.detalhes .box span {
+  display: block;
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+
+.detalhes .box strong {
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.previsao-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.card-dia {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 140px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.card-dia:hover {
+  transform: scale(1.05);
+}
+
+.card-dia strong {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.card-dia p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}

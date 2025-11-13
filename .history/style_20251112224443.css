@@ -28,7 +28,7 @@ body.night {
   background-color: rgba(255, 255, 255, 0.2);
   padding: 2rem;
   border-radius: 15px;
-  max-width: 700px;
+  max-width: 600px;
   width: 100%;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -90,16 +90,18 @@ button:hover {
   display: block;
 }
 
-/* Cartões horizontais para previsão */
-.previsao-container {
+/* Estilo para a previsão de 5 dias */
+ul.previsao {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+  padding: 0;
+  list-style: none;
   margin-top: 1rem;
 }
 
-.card-dia {
+ul.previsao li {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   padding: 1rem;
@@ -111,43 +113,12 @@ button:hover {
   transition: transform 0.3s ease;
 }
 
-.card-dia:hover {
+ul.previsao li:hover {
   transform: scale(1.05);
 }
 
-.card-dia strong {
+ul.previsao strong {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
-
-.previsao-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.card-dia {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 1rem;
-  width: 160px;
-  text-align: center;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: inherit;
-  transition: transform 0.3s ease;
-}
-
-.card-dia:hover {
-  transform: scale(1.05);
-}
-
-.card-dia strong {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
